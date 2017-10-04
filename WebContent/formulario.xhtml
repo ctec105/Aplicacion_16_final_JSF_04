@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- En este caso, "composition indica el layout con que trabaja esta pagina" -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/plantillas/plantilla.xhtml">
+	
+	<!-- En este caso, "define indica la zona de la platilla identificada" -->
+	<ui:define name="body">
+		<h2>Registro</h2>
+		<h:form styleClass="form">
+			<h:panelGrid columns="2" styleClass="table">
+				<!-- En este caso, el atributo "value" invoca a la propiedades del ManagedBean -->
+				<h:outputLabel value="Nombre" />
+				<h:inputText value="#{formulario.empleado.nombre}" />
+
+				<h:outputLabel value="Apellido" />
+				<h:inputText value="#{formulario.empleado.apellido}" />
+
+				<h:outputLabel value="Area" />
+				<h:inputText value="#{formulario.empleado.area}" />
+
+				<h:outputLabel value="Edad" />
+				<h:inputText value="#{formulario.empleado.edad}" />
+
+				<h:outputLabel value="Fecha Ingreso" />
+				<h:inputText value="#{formulario.empleado.fechaIngreso}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+
+				<h:outputLabel value="Casillero" />
+				<h:selectOneRadio value="#{formulario.empleado.casillero.codigo}">
+					<f:selectItems value="#{listado.casilleros}" />
+				</h:selectOneRadio>
+
+				<h:outputLabel value="Cargo" />
+				<h:selectOneListbox value="#{formulario.empleado.cargo.codigo}"
+					size="1">
+					<f:selectItems value="#{listado.cargos}" />
+				</h:selectOneListbox>
+
+				<h:outputLabel value="¿Habilitado?" />
+				<h:selectBooleanCheckbox value="#{formulario.empleado.estado}" />
+
+				<!-- En este caso, la acción ejecuta al método del action -->
+				<h:commandButton value="Procesar" action="#{formulario.procesar}" />
+				
+				<!-- En este caso, la acción se llama igual que la pagina final.xhtml -->
+				<h:commandButton value="Continuar" action="final" />
+			</h:panelGrid>
+		</h:form>
+
+		<!-- En este caso, mustra todos los mensajes almacenados -->
+		<h:messages styleClass="msjError"/>
+	</ui:define>
+	
+</ui:composition>

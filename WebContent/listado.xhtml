@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/plantillas/plantilla.xhtml">
+
+	<ui:define name="body">
+		<h2>Listado</h2>
+		<h:form styleClass="form">
+			<h:dataTable value="#{formulario.empleados}" var="dto" rules="all"
+				headerClass="cabeceraTabla" rowClasses="fila1,fila2"
+				styleClass="tabla">
+				<f:facet name="header">
+					<h:outputText value="LISTADO"></h:outputText>
+				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigo"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{dto.id}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Completo"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{dto.nombre} #{dto.apellido}"></h:outputText>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
