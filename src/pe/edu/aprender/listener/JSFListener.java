@@ -12,17 +12,14 @@ public class JSFListener implements PhaseListener {
 	
 	static Logger logger = Logger.getLogger(JSFListener.class.getName());
 
-	@Override
 	public void beforePhase(PhaseEvent arg0) {
 		logger.info("Antes de fase: " + arg0.getPhaseId());
 	}
 
-	@Override
 	public void afterPhase(PhaseEvent arg0) {
 		logger.info("Despues de fase: " + arg0.getPhaseId());
 	}
 
-	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.ANY_PHASE;
 	}
